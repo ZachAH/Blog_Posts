@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet"; // 1. Import Helmet
+import SeoModalDemo from "./components/seo_modal";
+
+
+import asiaImg from "./assets/asia.png";
+import techImg from "./assets/tech.png"
+import lifeImg from "./assets/lifestyle.png"
+import healthImg from "./assets/healthy.png"
+import ecomImg from "./assets/ecom.png"
 
 // Custom icon for blog posts
 const BlogIcon = () => (
@@ -38,7 +46,7 @@ const blogs = [
       <p>In today's digital age, we're constantly bombarded with notifications, emails, and social media updates. This can lead to a feeling of being overwhelmed and distracted. Try a digital detox. Unsubscribe from email lists you don't read, turn off notifications on your phone, and set specific times to check social media. By reducing the noise, you can reclaim your focus and be more present in the moment.</p>
     `,
     "image": {
-      "url": "https://placehold.co/600x400/000000/FFFFFF?text=Lifestyle+Blog",
+      "url": lifeImg,
       "altText": "A person meditating in a minimalist, decluttered room."
     }
   },
@@ -61,7 +69,7 @@ const blogs = [
       <p>As AI becomes more sophisticated, so do the ethical challenges. We must consider issues of bias in algorithms, the impact on employment, and the responsibility of developers to create safe and fair AI systems. These conversations are already happening, and they will be crucial in ensuring that the future of AI benefits everyone. The goal is to build an AI-powered world that is not only intelligent but also equitable and just.</p>
     `,
     "image": {
-      "url": "https://placehold.co/600x400/FFFFFF/000000?text=Technology+Blog",
+      "url": techImg,
       "altText": "A futuristic image with an AI brain icon, representing the future of artificial intelligence."
     }
   },
@@ -86,7 +94,7 @@ const blogs = [
       <p>Plastic waste is a major issue in many parts of the world, and Southeast Asia is no exception. A simple way to help is by carrying a reusable water bottle and a reusable shopping bag. Say "no" to plastic straws and single-use containers. Many places now have water refill stations, and by carrying your own bag, you can avoid using plastic bags at markets. Small actions like these can make a big difference.</p>
     `,
     "image": {
-      "url": "https://example.com/images/sustainable-tourism-southeast-asia-guide.jpg",
+      "url": asiaImg,
       "altText": "A scenic view of a beach and a temple, representing a guide to sustainable travel in Southeast Asia."
     },
     "author": "Your Name",
@@ -111,7 +119,7 @@ const blogs = [
       <p>One of the biggest obstacles to mindful eating is distractions. When we're watching TV, scrolling on our phones, or working at our desk, we're not paying attention to our food. Try to create a distraction-free environment for your meals. Put away your phone, turn off the TV, and sit at a table. This allows you to focus solely on your food and the experience of eating, leading to better digestion and a greater sense of satisfaction.</p>
     `,
     "image": {
-      "url": "https://placehold.co/600x400/9b59b6/ffffff?text=Health+Blog",
+      "url": healthImg,
       "altText": "A bowl of healthy food, representing mindful eating and a balanced lifestyle."
     }
   },
@@ -134,7 +142,7 @@ const blogs = [
       <p>Product descriptions are a crucial part of your content strategy. Don't just list features; tell a story. Describe how the product will make your customers' lives better. Use compelling language that evokes emotion. And don't forget to include keywords that your customers are searching for. A well-written, optimized product description can make the difference between a visitor and a customer.</p>
     `,
     "image": {
-      "url": "https://placehold.co/600x400/3498db/ffffff?text=E-commerce+Blog",
+      "url": ecomImg,
       "altText": "A digital illustration showing a shopping cart and content icons, representing e-commerce content strategy."
     }
   }
@@ -180,6 +188,7 @@ const App = () => {
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
             {blog.title}
           </h1>
+          <SeoModalDemo/>
           <div
             className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
             dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -205,12 +214,12 @@ const App = () => {
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Showcasing my content creation, AI research, and web development skills.
         </p>
-        <button
+        {/* <button
           onClick={() => setDarkMode(!darkMode)}
           className="mt-4 px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
         >
           Toggle Dark Mode
-        </button>
+        </button> */}
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
