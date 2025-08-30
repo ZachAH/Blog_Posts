@@ -188,7 +188,7 @@ const App = () => {
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
             {blog.title}
           </h1>
-          <SeoModalDemo/>
+          <SeoModalDemo />
           <div
             className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
             dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -209,10 +209,10 @@ const App = () => {
       </Helmet>
       <header className="text-center mb-10 w-full max-w-4xl">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
-          AI-Enhanced SEO Blog Posts that Rank
+        AI-Powered Blog Posts That Rank on Google & Drive Traffic
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Showcasing my content creation, AI research, and web development skills.
+        See how expertly crafted blog posts can drive traffic and grow your audience.
         </p>
         {/* <button
           onClick={() => setDarkMode(!darkMode)}
@@ -256,7 +256,7 @@ const App = () => {
           <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm py-4 px-6 md:px-12 flex justify-start">
             <button
               onClick={() => setActiveCategory(null)}
-              className="flex items-center space-x-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
+              className="flex items-center space-x-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-md"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +264,7 @@ const App = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="w-6 h-6"
               >
                 <path
                   strokeLinecap="round"
