@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-// Use a custom icon for the blog post to avoid external dependencies
+// Custom icon for blog posts
 const BlogIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +16,7 @@ const BlogIcon = () => (
   </svg>
 );
 
+// Your blogs array stays the same
 const blogs = [
   {
     id: 'lifestyle',
@@ -111,32 +112,31 @@ const blogs = [
 
 const App = () => {
   const [activeCategory, setActiveCategory] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const renderBlog = (blog) => {
-    return (
-      <div key={blog.id} className="p-6 md:p-10 lg:p-12">
-        <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-64 object-cover"
+  const renderBlog = (blog) => (
+    <div key={blog.id} className="p-6 md:p-10 lg:p-12">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-64 object-cover"
+        />
+        <div className="p-6 md:p-8">
+          <span className="inline-block px-3 py-1 mb-2 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full dark:bg-indigo-900 dark:text-indigo-300">
+            {blog.category}
+          </span>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
+            {blog.title}
+          </h1>
+          <div
+            className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
+            dangerouslySetInnerHTML={{ __html: blog.content }}
           />
-          <div className="p-6 md:p-8">
-            <span className="inline-block px-3 py-1 mb-2 text-sm font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full dark:bg-indigo-900 dark:text-indigo-300">
-              {blog.category}
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight mb-4">
-              {blog.title}
-            </h1>
-            <div
-              className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300"
-              dangerouslySetInnerHTML={{ __html: blog.content }}
-            />
-          </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
 
   const renderGrid = () => (
     <div className="flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
@@ -147,6 +147,12 @@ const App = () => {
         <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Showcasing my content creation, AI research, and web development skills.
         </p>
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="mt-4 px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
+        >
+          Toggle Dark Mode
+        </button>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
@@ -162,6 +168,7 @@ const App = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-6 flex flex-col items-start">
+              <BlogIcon />
               <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wide text-indigo-600 uppercase bg-indigo-100 rounded-full dark:bg-indigo-900 dark:text-indigo-300">
                 {blog.category}
               </span>
@@ -176,7 +183,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-sans antialiased">
+    <div className={darkMode ? "dark" : ""}>
       {activeCategory ? (
         <>
           <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm py-4 px-6 md:px-12 flex justify-start">
