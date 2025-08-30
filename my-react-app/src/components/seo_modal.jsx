@@ -5,19 +5,24 @@ const SeoModalDemo = () => {
 
   const sections = [
     {
-      title: "Create a Blog that Solves Problems",
+      title: "Create Blogs That Solve Problems",
       content:
-        "Writing blog posts that solve customer problems helps you rank for long-tail keywords. Search engines reward helpful, in-depth content, and it also builds trust with your audience."
+        "We craft blog posts that directly answer your audience’s questions, helping you rank for high-value keywords. By providing genuinely helpful content, you build trust with readers and turn them into paying customers faster."
     },
     {
       title: "Leverage User-Generated Content",
       content:
-        "UGC provides fresh, unique content for your site without you writing it all. Search engines like updated pages, and UGC adds authenticity and social proof that boosts engagement signals."
+        "User-generated content adds authenticity and keeps your site fresh without extra effort. Search engines love updated, unique content, and your audience will love seeing real-life examples, reviews, or testimonials—boosting engagement and conversions."
     },
     {
-      title: "Optimize Product Descriptions for Conversions",
+      title: "Optimize Product Descriptions for Sales",
       content:
-        "Optimized product descriptions with keywords improve your chances of appearing in search results. Compelling descriptions also increase click-through rate (CTR), which is another positive SEO signal."
+        "We write product descriptions that don’t just describe—they sell. Optimized for keywords and crafted to capture attention, these descriptions improve search rankings and drive higher click-through and conversion rates."
+    },
+    {
+      title: "Why Using AI Makes Everything Faster & Smarter",
+      content:
+        "AI tools supercharge content creation by generating high-quality, SEO-friendly copy in minutes instead of hours. Identify trending keywords, structure posts for maximum impact, and maintain a consistent brand voice effortlessly. Get more optimized content, faster—saving you time and giving you an edge over competitors."
     }
   ];
 
@@ -25,14 +30,13 @@ const SeoModalDemo = () => {
     <div className="max-w-xl mx-auto space-y-6 p-6">
       {/* SEO explanation */}
       <div className="bg-gray-50 rounded-xl p-6 mb-6 shadow-sm text-center">
-  <h1 className="text-2xl font-bold mb-2 text-gray-800">
-    Why This Is SEO-Optimized
-  </h1>
-  <p className="text-gray-600 text-lg">
-    Click each strategy below to see how it improves your site's SEO, builds authority, and drives sales.
-  </p>
-</div>
-
+        <h1 className="text-2xl font-bold mb-2 text-gray-800">
+          How This Boosts Your Website & Sales
+        </h1>
+        <p className="text-gray-600 text-lg">
+          Click each strategy below to discover how it drives more traffic, builds credibility, and converts visitors into customers—fast.
+        </p>
+      </div>
 
       {/* Buttons */}
       {sections.map((section, index) => (
