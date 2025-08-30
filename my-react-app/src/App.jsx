@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet"; // 1. Import Helmet
 
 // Custom icon for blog posts
 const BlogIcon = () => (
@@ -16,13 +17,15 @@ const BlogIcon = () => (
   </svg>
 );
 
-// Your blogs array stays the same
+// 2. Updated blogs array with optimized SEO fields
 const blogs = [
   {
-    id: 'lifestyle',
-    title: '5 Ways to Simplify Your Life and Find More Joy',
-    category: 'Lifestyle',
-    content: `
+    "id": "lifestyle",
+    "slug": "simplify-your-life-find-joy",
+    "title": "5 Ways to Simplify Your Life and Find More Joy",
+    "metaDescription": "Feeling overwhelmed? Discover 5 simple ways to declutter your life, say no more often, and find more joy and peace of mind. Read our guide to simplifying your lifestyle.",
+    "category": "Lifestyle",
+    "content": `
       <p>In our fast-paced world, it's easy to get caught up in the constant hustle. We're always on the go, juggling multiple tasks and feeling the pressure to do more. But what if the key to happiness isn't about adding more to our lives, but rather, simplifying it?</p>
       
       <h3>The Power of Saying "No"</h3>
@@ -34,13 +37,18 @@ const blogs = [
       <h3>Embrace Digital Minimalism</h3>
       <p>In today's digital age, we're constantly bombarded with notifications, emails, and social media updates. This can lead to a feeling of being overwhelmed and distracted. Try a digital detox. Unsubscribe from email lists you don't read, turn off notifications on your phone, and set specific times to check social media. By reducing the noise, you can reclaim your focus and be more present in the moment.</p>
     `,
-    image: 'https://placehold.co/600x400/000000/FFFFFF?text=Lifestyle+Blog',
+    "image": {
+      "url": "https://placehold.co/600x400/000000/FFFFFF?text=Lifestyle+Blog",
+      "altText": "A person meditating in a minimalist, decluttered room."
+    }
   },
   {
-    id: 'technology',
-    title: 'The Future of AI: From Assistants to Innovators',
-    category: 'Technology',
-    content: `
+    "id": "technology",
+    "slug": "future-of-ai-innovators",
+    "title": "The Future of AI: From Assistants to Innovators",
+    "metaDescription": "Explore the future of AI, moving beyond simple automation to becoming a creative partner. Learn about personalized AI, ethical challenges, and where the technology is heading.",
+    "category": "Technology",
+    "content": `
       <p>Artificial Intelligence is no longer just a buzzword; it's an integral part of our daily lives. From the voice assistant on your phone to the algorithms that recommend what you watch next, AI is quietly shaping our world. But where is it heading next?</p>
       
       <h3>Beyond Automation: AI as a Creative Partner</h3>
@@ -52,33 +60,45 @@ const blogs = [
       <h3>The Ethical Challenges</h3>
       <p>As AI becomes more sophisticated, so do the ethical challenges. We must consider issues of bias in algorithms, the impact on employment, and the responsibility of developers to create safe and fair AI systems. These conversations are already happening, and they will be crucial in ensuring that the future of AI benefits everyone. The goal is to build an AI-powered world that is not only intelligent but also equitable and just.</p>
     `,
-    image: 'https://placehold.co/600x400/FFFFFF/000000?text=Technology+Blog',
+    "image": {
+      "url": "https://placehold.co/600x400/FFFFFF/000000?text=Technology+Blog",
+      "altText": "A futuristic image with an AI brain icon, representing the future of artificial intelligence."
+    }
   },
   {
-    id: 'travel',
-    title: 'A Guide to Sustainable Tourism in Southeast Asia',
-    category: 'Travel & Tourism',
-    content: `
-<p>
-Southeast Asia is one of the world’s top travel destinations, offering everything from the ancient temples of Cambodia to the pristine beaches of the Philippines. As eco-tourism and <strong>sustainable travel in Southeast Asia</strong> become more important, travelers are seeking ways to minimize their environmental impact while exploring responsibly. <strong>Sustainable tourism</strong> is about reducing your carbon footprint, choosing <strong>eco-friendly accommodations</strong>, and respecting the local culture and communities you visit.
-</p>
-      
+    "id": "travel-guide-sustainable-tourism-southeast-asia",
+    "slug": "sustainable-tourism-southeast-asia-guide",
+    "title": "A Guide to Sustainable Tourism in Southeast Asia",
+    "metaDescription": "Learn how to practice sustainable travel in Southeast Asia. Our guide covers eco-friendly accommodations, supporting local communities, and reducing plastic waste for a responsible trip.",
+    "category": "Travel & Tourism",
+    "content": `
+      <p>
+        Southeast Asia is one of the world’s top travel destinations, offering everything from the ancient temples of Cambodia to the pristine beaches of the Philippines. As eco-tourism and <strong>sustainable travel in Southeast Asia</strong> become more important, travelers are seeking ways to minimize their environmental impact while exploring responsibly. <strong>Sustainable tourism</strong> is about reducing your carbon footprint, choosing <strong>eco-friendly accommodations</strong>, and respecting the local culture and communities you visit.
+      </p>
+            
       <h3>Eco-Friendly Hotels and Sustainable Accommodations in Southeast Asia</h3>
       <p>When booking your stay, look for hotels and guesthouses that are committed to sustainability. Many places are now certified as eco-friendly, using renewable energy, conserving water, and supporting local communities. You can often find this information on their websites or through sustainable travel booking platforms. By choosing these options, you're not only reducing your carbon footprint but also supporting businesses that are making a positive impact.</p>
-      
+            
       <h3>Support Local Communities and Responsible Tourism</h3>
       <p>One of the best parts of traveling is experiencing local culture. To support the local economy, choose to eat at family-owned restaurants and buy souvenirs directly from local artisans. Instead of large tour companies, consider hiring a local guide. Not only will this ensure your money stays in the community, but you'll also get a more authentic and personal experience.</p>
-      
+            
       <h3>Reduce Plastic Waste While Traveling in Asia</h3>
       <p>Plastic waste is a major issue in many parts of the world, and Southeast Asia is no exception. A simple way to help is by carrying a reusable water bottle and a reusable shopping bag. Say "no" to plastic straws and single-use containers. Many places now have water refill stations, and by carrying your own bag, you can avoid using plastic bags at markets. Small actions like these can make a big difference.</p>
     `,
-    image: 'https://placehold.co/600x400/36A9E1/ffffff?text=Travel+Blog',
+    "image": {
+      "url": "https://example.com/images/sustainable-tourism-southeast-asia-guide.jpg",
+      "altText": "A scenic view of a beach and a temple, representing a guide to sustainable travel in Southeast Asia."
+    },
+    "author": "Your Name",
+    "publicationDate": "2025-08-29"
   },
   {
-    id: 'health',
-    title: 'Mindful Eating: A Simple Guide to Better Digestion',
-    category: 'Health & Wellness',
-    content: `
+    "id": "health",
+    "slug": "mindful-eating-better-digestion",
+    "title": "Mindful Eating: A Simple Guide to Better Digestion",
+    "metaDescription": "Learn how to improve your digestion and relationship with food through mindful eating. This guide covers slowing down, listening to your body's cues, and eliminating distractions.",
+    "category": "Health & Wellness",
+    "content": `
       <p>In our busy lives, we often eat on the go or while distracted by our phones or work. This habit can lead to poor digestion and a disconnect from our bodies' hunger and fullness cues. Mindful eating is a practice that can help you reconnect with your food and improve your overall health.</p>
       
       <h3>Slow Down and Savor Each Bite</h3>
@@ -90,13 +110,18 @@ Southeast Asia is one of the world’s top travel destinations, offering everyth
       <h3>Eliminate Distractions</h3>
       <p>One of the biggest obstacles to mindful eating is distractions. When we're watching TV, scrolling on our phones, or working at our desk, we're not paying attention to our food. Try to create a distraction-free environment for your meals. Put away your phone, turn off the TV, and sit at a table. This allows you to focus solely on your food and the experience of eating, leading to better digestion and a greater sense of satisfaction.</p>
     `,
-    image: 'https://placehold.co/600x400/9b59b6/ffffff?text=Health+Blog',
+    "image": {
+      "url": "https://placehold.co/600x400/9b59b6/ffffff?text=Health+Blog",
+      "altText": "A bowl of healthy food, representing mindful eating and a balanced lifestyle."
+    }
   },
   {
-    id: 'ecommerce',
-    title: 'Boost Your E-commerce Sales with a Compelling Content Strategy',
-    category: 'E-commerce',
-    content: `
+    "id": "ecommerce",
+    "slug": "content-strategy-boost-ecommerce-sales",
+    "title": "Boost Your E-commerce Sales with a Compelling Content Strategy",
+    "metaDescription": "Learn how to boost your e-commerce sales with an effective content strategy. This guide covers creating a problem-solving blog, leveraging user-generated content, and optimizing product descriptions.",
+    "category": "E-commerce",
+    "content": `
       <p>In the crowded world of e-commerce, it's not enough to just have great products. To stand out, you need to create a compelling content strategy that attracts customers, builds trust, and drives sales. Content is your opportunity to connect with your audience and establish your brand as a trusted authority.</p>
       
       <h3>Create a Blog that Solves Problems</h3>
@@ -108,20 +133,44 @@ Southeast Asia is one of the world’s top travel destinations, offering everyth
       <h3>Optimize Product Descriptions for Conversions</h3>
       <p>Product descriptions are a crucial part of your content strategy. Don't just list features; tell a story. Describe how the product will make your customers' lives better. Use compelling language that evokes emotion. And don't forget to include keywords that your customers are searching for. A well-written, optimized product description can make the difference between a visitor and a customer.</p>
     `,
-    image: 'https://placehold.co/600x400/3498db/ffffff?text=E-commerce+Blog',
-  },
+    "image": {
+      "url": "https://placehold.co/600x400/3498db/ffffff?text=E-commerce+Blog",
+      "altText": "A digital illustration showing a shopping cart and content icons, representing e-commerce content strategy."
+    }
+  }
 ];
 
+// 3. Update all image usage to use the new object structure
 const App = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
+  const currentBlog = blogs.find((blog) => blog.id === activeCategory);
+
+  // 4. Use useEffect to update the document title when the active blog changes
+  useEffect(() => {
+    if (currentBlog) {
+      document.title = currentBlog.title;
+    } else {
+      document.title = "AI-Enhanced SEO Blog Posts that Rank";
+    }
+  }, [currentBlog]);
 
   const renderBlog = (blog) => (
     <div key={blog.id} className="p-6 md:p-10 lg:p-12">
+      {/* 5. Add Helmet for dynamic meta tags */}
+      <Helmet>
+        <title>{blog.title}</title>
+        <meta name="description" content={blog.metaDescription} />
+        {/* Open Graph Tags for social media sharing */}
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.metaDescription} />
+        <meta property="og:image" content={blog.image.url} />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
         <img
-          src={blog.image}
-          alt={blog.title}
+          src={blog.image.url} // Use image object
+          alt={blog.image.altText} // Use image object
           className="w-full h-64 object-cover"
         />
         <div className="p-6 md:p-8">
@@ -142,6 +191,13 @@ const App = () => {
 
   const renderGrid = () => (
     <div className="flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <Helmet>
+        <title>AI-Enhanced SEO Blog Posts that Rank</title>
+        <meta
+          name="description"
+          content="Showcasing my content creation, AI research, and web development skills through a series of optimized blog posts."
+        />
+      </Helmet>
       <header className="text-center mb-10 w-full max-w-4xl">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
           AI-Enhanced SEO Blog Posts that Rank
@@ -165,8 +221,8 @@ const App = () => {
             className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
           >
             <img
-              src={blog.image}
-              alt={blog.title}
+              src={blog.image.url} // Use image object
+              alt={blog.image.altText} // Use image object
               className="w-full h-48 object-cover"
             />
             <div className="p-6 flex flex-col items-start">
@@ -210,7 +266,7 @@ const App = () => {
               <span>Back to Portfolio</span>
             </button>
           </nav>
-          {renderBlog(blogs.find((blog) => blog.id === activeCategory))}
+          {renderBlog(currentBlog)}
         </>
       ) : (
         renderGrid()
